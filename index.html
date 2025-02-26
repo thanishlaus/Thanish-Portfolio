@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanish Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #121212;
+            color: #e0e0e0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            transition: background 0.5s ease-in-out;
+        }
+
+        a {
+            text-decoration: none;
+            color: #00bcd4;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #1c1c1c;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            color: #ff5722;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a:hover {
+            color: #ff5722;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            background: none;
+            border: 1px solid #00bcd4;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            color: #00bcd4;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: #00bcd4;
+            color: #121212;
+        }
+
+        .resume-button {
+            cursor: pointer;
+            background: #ff5722;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .resume-button:hover {
+            background: #e64a19;
+        }
+
+        section {
+            padding: 4rem 2rem;
+            min-height: 35vh;
+        }
+
+        #particles-js {
+            position:absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 925px;
+            z-index: -1;
+        }
+
+        section1 {
+            padding: 2rem 2rem;
+            min-height: 35vh;
+            text-align: center;
+        }
+
+        section2 {
+            padding: 4rem 2rem;
+            min-height: 25px;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5rem 2rem;
+            /* background: linear-gradient(135deg, #1c1c1c, #333); */
+            color: white;
+            height: 100vh;
+        }
+
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #b0bec5;
+        }
+
+        .hero img {
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            justify-items: center;
+        }
+
+        .project {
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 2px solid #00bcd4; /* Border for each project */
+            border-radius: 10px; /* Rounded corners */
+            padding: 1rem; /* Padding inside the project box */
+            background: #1c1c1c; /* Background color for the project box */
+            width: 100%; /* Ensure it takes full width of the grid cell */
+            overflow: hidden;
+        }
+
+        .project img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .github-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: #333;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px;
+            border-radius: 30%;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .github-icon:hover {
+            color: #000;
+            transform: scale(1.2);
+        }
+
+        .project:hover img {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+    
+
+        .project:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-description {
+            color: #e0e0e0; /* Bright text color for project descriptions */
+        }
+
+        .project h2 {
+            color: #ffffff; /* Ensure project headings are white in dark theme */
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            justify-items: center;
+        }
+
+        .skill {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: scale_anime 2s infinite ease-in-out;
+        }  
+        @keyframes scale_anime { 
+            0% {transform: scale(1);}
+            50% {transform: scale(1.15);}
+            100% {transform: scale(1);}
+        }
+
+        .skill:hover img {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            animation: infinite ease-in-out;
+        }
+
+        .skill:hover {
+            transform: translateY(-5px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #1c1c1c;
+        }
+
+        footer p {
+            color: #757575;
+        }
+
+        footer a:hover {
+            color: #ff5722;
+        }
+
+        .light-mode {
+            background: #f5f5f5;
+            color: #121212;
+        }
+
+        .light-mode header {
+            background: #ffffff;
+        }
+
+        .light-mode .card {
+            background: #e0e0e0;
+        }
+        .certifications-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    perspective: 1000px; /* Enables the 3D effect */
+}
+
+.certification-item {
+    border: 2px solid #00bcd4;
+    border-radius: 10px;
+    padding: 1rem;
+    background: #1c1c1c;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    margin-bottom: 1rem;
+    transform-origin: center;
+}
+
+.certification-item:hover {
+    transform: scale(1.1) translateY(-10px) rotateX(5deg); /* Raises the box upwards */
+    box-shadow: 0 15px 30px rgba(0, 188, 212, 0.6); /* Enhances the lifted effect */
+}
+
+.certification-item h3 {
+    font-size: 1.2rem;
+    color: #ff5722;
+}
+
+.certification-item p {
+    color: #b0bec5;
+}
+
+        
+        .contact {
+            text-align: center;
+        }
+
+        .contact a {
+            display: block;
+            margin: 0.5rem 0;
+            color: #00bcd4;
+        }
+
+        .contact a:hover {
+            color: #ff5722;
+        }
+
+        .contact-icon {
+            margin-right: 0.5rem; /* Space between icon and text */
+        }
+    </style>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        
+        // document.querySelectorAll(".project").forEach((project) => {
+        //     gsap.fromTo(project, 
+        //         { opacity: 0, y: 50 }, 
+        //         { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", 
+        //           scrollTrigger: {
+        //               trigger: project,
+        //               start: "top 80%",
+        //               toggleActions: "play none none reset"
+        //           }
+        //         }
+        //     );
+        // });
+        // // GitHub Link Navigation
+        // document.querySelectorAll(".github-icon").forEach((icon) => {
+        //     icon.addEventListener("click", (event) => {
+        //         const projectDiv = event.target.closest(".project");
+        //         const url = projectDiv.getAttribute("data-url");
+        //         window.open(url, "_blank");
+        //     });
+        // });
+        document.addEventListener("DOMContentLoaded", function () {
+            gsap.from(".certification-item", {
+                opacity: 0,
+                y: 5,
+                stagger: 0.2,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: "#certification-item",
+                    start: "top 50%",
+                    toggleActions: "play none none reset"
+                }
+            });
+        });
+    // Function to toggle the theme
+    function toggleTheme() {
+        document.body.classList.toggle('light-mode');
+    }
+
+    // Function to open the resume in a new tab
+    function viewResume() {
+        window.open("asserts/resume.pdf", '_blank');
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+    const faders = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    faders.forEach(fader => {
+        observer.observe(fader);
+    });
+});
+
+    // Function to handle navigation with animation
+    document.addEventListener('DOMContentLoaded', function () {
+        const links = document.querySelectorAll('nav ul li a');
+        const sections = document.querySelectorAll('section');
+
+        // Show the home section by default
+        sections[0].classList.add('active');
+
+        links.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevent default anchor click behavior
+                const targetId = this.getAttribute('href'); // Get the target section ID
+
+                // Remove active class from all sections
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                // Add active class to the target section
+                const targetSection = document.querySelector(targetId);
+                targetSection.classList.add('active');
+
+                // Scroll to the target section
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    });
+</script>
+
+</head>
+<body>
+    <div id="particles-js"></div>
+    <header>
+        <h1>Thanislaus's Portfolio</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#section2">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button class="theme-toggle" onclick="toggleTheme()">Theme</button></li>
+                <li><button class="resume-button" onclick="viewResume()">View Resume</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- <img src="asserts/oneko-classic.gif" alt="Cat Logo" id="catLogo">  -->
+
+        <!-- Import Particles.js and app.js files -->
+        <script src=
+        "particles.js-master/particles.js">
+        </script>
+        <script src=
+            "/particles.js-master/demo/js/app.js">
+        </script>
+
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Welcome to My Portfolio</h2>
+            <p>I am Thanislaus Immanual, a pre-final year B.Tech student specializing in Artificial Intelligence and Data Science</p>
+        </div>
+        <img src="asserts/profile.png" alt="Your Photo">
+        
+    </section>
+
+    <section id="section2" class="scroll-section"><br><br>
+        <h2>About Me</h2><br><br>
+        <h3>I am Thanislaus Immanual, a pre-final year B.Tech student specializing in Artificial Intelligence and Data Science. Passionate about solving complex problems through technology, I have strong expertise in Python, Java, Machine Learning, AI, and Data Science, along with hands-on experience using TensorFlow, Docker, SQL, and Django.<br><br>
+
+            I enjoy tackling data structure problems and have worked on impactful projects like Wild Animal Detection, Heart Disease Prediction, and Voice Assistants, as well as a Fitness Class Booking System. My internship experiences have strengthened my technical and analytical skills, providing valuable exposure to software development and real-world AI applications.
+            
+            With a continuous learning mindset, I am eager to contribute my skills in a dynamic environment where I can innovate, collaborate, and drive meaningful advancements in the tech world.<br><br>
+            I have a strong foundation in both theoretical concepts and practical implementations, enabling me to develop efficient and scalable solutions. My ability to adapt to emerging technologies helps me stay ahead in the ever-evolving tech landscape. I thrive in collaborative environments, where I can exchange ideas and contribute to impactful projects. With a passion for continuous learning and problem-solving, I am committed to making a difference through technology.<br><br>
+            I completed my schooling at Don Bosco Matriculation Higher Secondary School, where I built a strong academic foundation and developed essential skills that shaped my passion for technology. My school years played a crucial role in fostering my curiosity for problem-solving and analytical thinking.<br><br><br>
+        
+        </h3>
+    </section>
+
+    <section id="projects" class="scroll-section">
+        <h1>Projects</h1>
+        <br> <br>
+        <div class="project-grid">
+            <div class="project">
+                <a href="https://github.com/thanishlaus/SmartFitness-Assistant.git" class="github-icon" target="_blank"><i class="fab fa-github"></i></a>
+                <img src="asserts/project1 fitness tracker.png" alt="Project 1"><br><br>
+                <h2>SmartFitness Assistant </h2><br>
+                <h3 class="project-description" style="text-align: justify;">
+                    • Designed an AI-driven fitness assistant leveraging machine learning pipelines for personalized workout recommendations.<br><br>
+                    • Implemented automated activity tracking and real-time feedback to enhance user performance and progress monitoring.<br><br>
+                    • Optimized ML workflows for data preprocessing, model training, and prediction, ensuring adaptive and intelligent fitness coaching.
+                </h3>
+            </div>
+            <div class="project">
+                <a href="https://github.com/thanishlaus/Wild-animal-detection.git" class="github-icon" target="_blank"><i class="fab fa-github"></i></a>
+                <img src="asserts/project-animal.png" alt="Project 2"><br><br>
+                <h2>Wild Animal Detection</h2><br>
+                <h3 class="project-description" style="text-align: justify;">
+                    • The scope of the project focusing on wild animal detection in residential areas and approach to the forest department 
+                    as well as resident to avoid human- wildlife interaction.<br><br>
+                    • Developed a ML model using SSD DL algorithm using pytorch framework.<br><br>
+                    • Achieved a real-time wild animal detection in residential areas and enhancing public safety
+                </h3>
+            </div>
+            <div class="project">
+                <a href="https://github.com/thanishlaus/Heart_disease_prediction.git" class="github-icon" target="_blank"><i class="fab fa-github"></i></a>
+                <img src="asserts/project3-heart.png" alt="Project 3"><br><br>
+                <h2>Heart Disease Prediction</h2><br>
+                <h3 class="project-description" style="text-align: justify;">
+                    • Scope of the project is to utilizing diverse datasets to train a model and predict heart disease for enhancing diagnostic accuracy and efficiency.<br><br>
+                    • Trained a AutoML Model and Deployed using Docker.<br><br>
+                    • Frontend - javascript, CSS, Node.js, React.js<br><br>
+                    • Framework - Django
+                </h3>
+            </div>
+            <div class="project">
+                <a href="https://github.com/thanishlaus/student-management-system.git" class="github-icon" target="_blank"><i class="fab fa-github"></i></a>
+                <img src="asserts/project4-student.png" alt="Project 4"><br><br>
+                <h2>Student Management System</h2><br>
+                <h3 class="project-description" style="text-align: justify;">
+                    • Developed a student management system web application for admission, handling attendance, marks and allot rank.<br><br>
+                    • Database managed by MySql.<br><br>
+                    • Frontend developed using HTML, CSS, javascript.
+                </h3>
+            </div>
+        </div>
+    </section><br><br>
+
+    <section id="skills" class="scroll-section">
+        <h2>Skills</h2>
+        <br>
+        <div class="skills-grid">
+            <div class="skill">
+                <img src="asserts/python.png" alt="Python">
+                <p>Python</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/java.png" alt="Java">
+                <p>Java</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/c++.png" alt="c++">
+                <p>C++</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/R.png" alt="R">
+                <p>R</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/html.png" alt="html">
+                <p>HTML</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/css.png" alt="CSS">
+                <p>CSS</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/react.png" alt="React">
+                <p>React</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/mysql.png" alt="mysql">
+                <p>MySql</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/mongodb.png" alt="mdb">
+                <p>MongoDB</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/oracle.png" alt="oracle">
+                <p>Oracle</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/django.png" alt="django">
+                <p>Django</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/flask.png" alt="flask">
+                <p>Flask</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/git.png" alt="git">
+                <p>Git</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/github.png" alt="github">
+                <p>GitHub</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/jenkins.png" alt="jenkins">
+                <p>Jenkins</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/docker.png" alt="Docker">
+                <p>Docker</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/tensorflow.png" alt="TensorFlow">
+                <p>TensorFlow</p>
+            </div>
+            <div class="skill">
+                <img src="asserts/tableau.png" alt="tableau">
+                <p>Tableau</p>
+            </div>
+        </div>
+    </section><br><br><br>
+    
+    <section id="certifications" class="scroll-section">
+        
+        <h1>Certifications</h1>
+        <br>
+        <ul class="certifications-list">
+            <li class="certification-item">
+                <h3>QLIK Sense Business Analyst</h3>
+                <p>Proficient in designing, analyzing, and sharing reports to support strategic business outcomes.</p>
+            </li>
+            <li class="certification-item">
+                <h3>Artificial Intelligence in Bio Medical Workshop</h3>
+                <p>Gained hands-on experience in Neural Networks and Deep Learning Algorithms and Well versed in Concepts like Deep Learning, Neural Networks & Convolution Neural 
+                    Networks.</p>
+            </li>
+            <li class="certification-item">
+                <h3>Basics on Cyber Security</h3>
+                <p>Gained basic knowledge in Authentication, Encryption, Firewall, Computernetworks.</p>
+            </li>
+            <li class="certification-item">
+                <h3>IIT Spoken tutorial Course on Java</h3>
+                <p>Enhanced my skills in developing efficient business applications using Java.</p>
+            </li>
+            <li class="certification-item">
+                <h3>Machine learning and Deep learning</h3>
+                <p>Well-versed in Machine Learning and Deep Learning principles, with a strong foundation in 
+                    building, training, and fine-tuning intelligent models for diverse applications.</p>
+            </li>
+            <li class="certification-item">
+                <h3>Data Analytics with Python</h3>
+                <p>Well-versed in Probability, Hypothesis testing, ANOVA, Maximum Likelihood Estimation 
+                    Regressions, Cluster analysis, Classification and Regression Trees, Calculation metrics, 
+                    ROC and AUC curve, Chi-square test.</p>
+            </li>
+            <li class="certification-item">
+                <h3>Python for Data Science</h3>
+                <p>Gained knowledge in python libraries such as Numpy, pandas, Matplotlib, Scipy, TensonFlow, 
+                    Scikit-learn, seaborn.</p>
+            </li>
+            <li class="certification-item">
+                <h3>Enhancing Soft Skills and Personality</h3>
+                <p>Enhanced my soft skill such as Time management, Problem solving, Communicationskills, 
+                    Critical thinking, Creative thinking, Adaptability.</p>
+            </li>
+        </ul>
+    </section>
+    
+    <section id="contact"> <!-- Added id for contact section -->
+        <h2 style="text-align: center;">Contact</h2> <!-- Centered heading -->
+        <div class="contact">
+            <a href="mailto:antothanish6369@gmail.com"><i class="fas fa-envelope contact-icon"></i> antothanish6369@gmail.com</a>
+            <a href="tel:+91 6369108340"><i class="fas fa-phone contact-icon"></i> +91 6369108340</a>
+            <a href="https://www.linkedin.com/in/thanis6369" target="_blank"><i class="fab fa-linkedin contact-icon"></i> Let's Connect</a>
+            <a href="https://github.com/thanishlaus" target="_blank"><i class="fab fa-github contact-icon"></i>Just Visit </a>
+        </div>
+    </section>
+    <script src="script.js"></script>
+    <footer>
+        <p>&copy; Built with passion.</p>
+    </footer>
+</body>
+</html>
