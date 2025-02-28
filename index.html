@@ -24,6 +24,13 @@
             line-height: 1.6;
             scroll-behavior: smooth;
             transition: background 0.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         a {
@@ -34,13 +41,15 @@
         header {
             position: sticky;
             top: 0;
+            width: 100%;
             z-index: 1000;
             background: #1c1c1c;
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgb(0, 0, 0);
+            
         }
 
         header h1 {
@@ -48,28 +57,106 @@
             color: #ff5722;
         }
 
-        nav ul {
+        /* nav ul {
             display: flex;
             list-style: none;
             align-items: center;
+            
         }
 
         nav ul li {
             margin-left: 20px;
+            tr
         }
 
         nav ul li a:hover {
             color: #ff5722;
-        }
+        } */
+
+        /* Navbar container */
+.navbar {
+  overflow: hidden;
+  font-family: Arial;
+  
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  border-radius: 5px;
+  
+}
+.navbar a:hover{
+    color: #ff5722;
+}
+
+/* The dropdown container */
+/* .dropdown {
+  float: left;
+  overflow: hidden;
+} */
+
+/* Dropdown button
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  /* margin: 0; Important for vertical align on mobile phones */
+
+
+/* Add a red background color to navbar links on hover */
+/* .navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+} */
+
+/* Dropdown content (hidden by default) */
+/* .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+} */
+
+/* Links inside the dropdown */
+/* .dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+} */
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 
         .theme-toggle {
             cursor: pointer;
             background: none;
             border: 1px solid #00bcd4;
-            padding: 0.5rem 1rem;
+            /* padding: 0.5rem 1rem; */
             border-radius: 5px;
             color: #00bcd4;
             transition: background 0.3s ease, color 0.3s ease;
+            padding: 14px 16px;
+            margin-bottom: 2px;
         }
 
         .theme-toggle:hover {
@@ -82,9 +169,10 @@
             background: #ff5722;
             color: white;
             border: none;
-            padding: 0.5rem 1rem;
+            /* padding: 0.5rem 1rem; */
             border-radius: 5px;
             transition: background 0.3s ease;
+            padding: 14px 16px;
         }
 
         .resume-button:hover {
@@ -97,7 +185,7 @@
         }
 
         #particles-js {
-            position:absolute;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -105,27 +193,14 @@
             z-index: -1;
         }
 
-        section1 {
-            padding: 2rem 2rem;
-            min-height: 35vh;
-            text-align: center;
-        }
-
-        section2 {
-            padding: 4rem 2rem;
-            min-height: 25px;
-        }
-
         .hero {
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 5rem 2rem;
-            /* background: linear-gradient(135deg, #1c1c1c, #333); */
             color: white;
             height: 100vh;
         }
-
 
         .hero-content {
             flex: 1;
@@ -134,11 +209,12 @@
         .hero h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            color: #757575;
         }
 
         .hero p {
             font-size: 1.2rem;
-            color: #b0bec5;
+            color: #47a9da;
         }
 
         .hero img {
@@ -152,12 +228,6 @@
         .hero img:hover {
             transform: scale(1.1);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
         }
 
         .project-grid {
@@ -185,6 +255,23 @@
             border-radius: 10px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
+        .project:hover img {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-description {
+            color: #e0e0e0; /* Bright text color for project descriptions */
+        }
+
+        .project h2 {
+            color: #ffffff; /* Ensure project headings are white in dark theme */
+        }
         .github-icon {
             position: absolute;
             top: 10px;
@@ -201,29 +288,11 @@
             transform: scale(1.2);
         }
 
-        .project:hover img {
-            transform: scale(1.1);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        }
-    
-
-        .project:hover {
-            transform: translateY(-5px);
-        }
-
-        .project-description {
-            color: #e0e0e0; /* Bright text color for project descriptions */
-        }
-
-        .project h2 {
-            color: #ffffff; /* Ensure project headings are white in dark theme */
-        }
-
         .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            justify-items: center;
+            display: flex; /* Use flexbox for larger screens */
+            flex-wrap: wrap; /* Allow wrapping to the next line */
+            justify-content: center; /* Center the items */
+            gap: 2rem; /* Space between items */
         }
 
         .skill {
@@ -259,6 +328,7 @@
             text-align: center;
             padding: 2rem;
             background: #1c1c1c;
+            width: 100%;
         }
 
         footer p {
@@ -278,41 +348,37 @@
             background: #ffffff;
         }
 
-        .light-mode .card {
-            background: #e0e0e0;
-        }
         .certifications-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    perspective: 1000px; /* Enables the 3D effect */
-}
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            perspective: 1000px; /* Enables the 3D effect */
+        }
 
-.certification-item {
-    border: 2px solid #00bcd4;
-    border-radius: 10px;
-    padding: 1rem;
-    background: #1c1c1c;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    margin-bottom: 1rem;
-    transform-origin: center;
-}
+        .certification-item {
+            border: 2px solid #00bcd4;
+            border-radius: 10px;
+            padding: 1rem;
+            background: #1c1c1c;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            margin-bottom: 1rem;
+            transform-origin: center;
+        }
 
-.certification-item:hover {
-    transform: scale(1.1) translateY(-10px) rotateX(5deg); /* Raises the box upwards */
-    box-shadow: 0 15px 30px rgba(0, 188, 212, 0.6); /* Enhances the lifted effect */
-}
+        .certification-item:hover {
+            transform: scale(1.1) translateY(-10px) rotateX(5deg); /* Raises the box upwards */
+            box-shadow: 0 15px 30px rgba(0, 188, 212, 0.6); /* Enhances the lifted effect */
+        }
 
-.certification-item h3 {
-    font-size: 1.2rem;
-    color: #ff5722;
-}
+        .certification-item h3 {
+            font-size: 1.2rem;
+            color: #ff5722;
+        }
 
-.certification-item p {
-    color: #b0bec5;
-}
+        .certification-item p {
+            color: #b0bec5;
+        }
 
-        
         .contact {
             text-align: center;
         }
@@ -330,30 +396,50 @@
         .contact-icon {
             margin-right: 0.5rem; /* Space between icon and text */
         }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column; /* Stack content vertically */
+                text-align: center; /* Center text */
+            }
+
+            .hero img {
+                width: 80%; /* Responsive image size */
+                height: auto; /* Maintain aspect ratio */
+            }
+
+            section {
+                padding: 2rem 1rem; /* Adjust padding for smaller screens */
+            }
+
+            .project img {
+                width: 100%; /* Make project images responsive */
+                height: auto; /* Maintain aspect ratio */
+            }
+
+            .skill img {
+                width: 80px; /* Adjust skill image size */
+                height: 80px; /* Adjust skill image size */
+            }
+
+            .project-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive grid */
+            }
+
+            nav ul {
+                flex-direction: column; /* Stack items vertically */
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 5px 0; /* Adjust margin for vertical layout */
+            }
+        }
     </style>
     <script>
         gsap.registerPlugin(ScrollTrigger);
         
-        // document.querySelectorAll(".project").forEach((project) => {
-        //     gsap.fromTo(project, 
-        //         { opacity: 0, y: 50 }, 
-        //         { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", 
-        //           scrollTrigger: {
-        //               trigger: project,
-        //               start: "top 80%",
-        //               toggleActions: "play none none reset"
-        //           }
-        //         }
-        //     );
-        // });
-        // // GitHub Link Navigation
-        // document.querySelectorAll(".github-icon").forEach((icon) => {
-        //     icon.addEventListener("click", (event) => {
-        //         const projectDiv = event.target.closest(".project");
-        //         const url = projectDiv.getAttribute("data-url");
-        //         window.open(url, "_blank");
-        //     });
-        // });
         document.addEventListener("DOMContentLoaded", function () {
             gsap.from(".certification-item", {
                 opacity: 0,
@@ -367,65 +453,66 @@
                 }
             });
         });
-    // Function to toggle the theme
-    function toggleTheme() {
-        document.body.classList.toggle('light-mode');
-    }
 
-    // Function to open the resume in a new tab
-    function viewResume() {
-        window.open("asserts/resume.pdf", '_blank');
-    }
-    document.addEventListener("DOMContentLoaded", function () {
-    const faders = document.querySelectorAll(".fade-in");
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    faders.forEach(fader => {
-        observer.observe(fader);
-    });
-});
+        // Function to toggle the theme
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+        }
 
-    // Function to handle navigation with animation
-    document.addEventListener('DOMContentLoaded', function () {
-        const links = document.querySelectorAll('nav ul li a');
-        const sections = document.querySelectorAll('section');
+        // Function to open the resume in a new tab
+        function viewResume() {
+            window.open("asserts/resume.pdf", '_blank');
+        }
 
-        // Show the home section by default
-        sections[0].classList.add('active');
-
-        links.forEach(link => {
-            link.addEventListener('click', function (e) {
-                e.preventDefault(); // Prevent default anchor click behavior
-                const targetId = this.getAttribute('href'); // Get the target section ID
-
-                // Remove active class from all sections
-                sections.forEach(section => {
-                    section.classList.remove('active');
+        document.addEventListener("DOMContentLoaded", function () {
+            const faders = document.querySelectorAll(".fade-in");
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
                 });
-
-                // Add active class to the target section
-                const targetSection = document.querySelector(targetId);
-                targetSection.classList.add('active');
-
-                // Scroll to the target section
-                targetSection.scrollIntoView({ behavior: 'smooth' });
+            }, { threshold: 0.5 });
+            
+            faders.forEach(fader => {
+                observer.observe(fader);
             });
         });
-    });
-</script>
 
+        // Function to handle navigation with animation
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('nav ul li a');
+            const sections = document.querySelectorAll('section');
+
+            // Show the home section by default
+            sections[0].classList.add('active');
+
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault(); // Prevent default anchor click behavior
+                    const targetId = this.getAttribute('href'); // Get the target section ID
+
+                    // Remove active class from all sections
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                    });
+
+                    // Add active class to the target section
+                    const targetSection = document.querySelector(targetId);
+                    targetSection.classList.add('active');
+
+                    // Scroll to the target section
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <div id="particles-js"></div>
     <header>
         <h1>Thanislaus's Portfolio</h1>
-        <nav>
+        <!-- <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#section2">About Me</a></li>
@@ -436,19 +523,29 @@
                 <li><button class="theme-toggle" onclick="toggleTheme()">Theme</button></li>
                 <li><button class="resume-button" onclick="viewResume()">View Resume</button></li>
             </ul>
-        </nav>
+        </nav> -->
+
+        <div class="navbar">
+            <a href="#home">Home</a>
+            <a href="#section2">About Me</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#contact">Contact</a>
+            <button class="theme-toggle" onclick="toggleTheme()">Theme</button>
+            <button class="resume-button" onclick="viewResume()">View Resume</button>
+            <!-- <div class="dropdown">
+              <button class="dropbtn">Dropdown
+                <i class="fa fa-caret-down"></i>
+              </button> -->
+              <!-- <div class="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+              </div> -->
+            </div>
+          </div>
     </header>
-
-    <!-- <img src="asserts/oneko-classic.gif" alt="Cat Logo" id="catLogo">  -->
-
-        <!-- Import Particles.js and app.js files -->
-        <script src=
-        "particles.js-master/particles.js">
-        </script>
-        <script src=
-            "/particles.js-master/demo/js/app.js">
-        </script>
-
 
     <section id="home" class="hero">
         <div class="hero-content">
@@ -456,74 +553,67 @@
             <p>I am Thanislaus Immanual, a pre-final year B.Tech student specializing in Artificial Intelligence and Data Science</p>
         </div>
         <img src="asserts/profile.png" alt="Your Photo">
-        
     </section>
 
-    <section id="section2" class="scroll-section"><br><br>
-        <h2>About Me</h2><br><br>
+    <section id="section2" class="scroll-section"><br> <br>
+        <h2>About Me</h2> <br> 
         <h3>I am Thanislaus Immanual, a pre-final year B.Tech student specializing in Artificial Intelligence and Data Science. Passionate about solving complex problems through technology, I have strong expertise in Python, Java, Machine Learning, AI, and Data Science, along with hands-on experience using TensorFlow, Docker, SQL, and Django.<br><br>
-
             I enjoy tackling data structure problems and have worked on impactful projects like Wild Animal Detection, Heart Disease Prediction, and Voice Assistants, as well as a Fitness Class Booking System. My internship experiences have strengthened my technical and analytical skills, providing valuable exposure to software development and real-world AI applications.
-            
             With a continuous learning mindset, I am eager to contribute my skills in a dynamic environment where I can innovate, collaborate, and drive meaningful advancements in the tech world.<br><br>
             I have a strong foundation in both theoretical concepts and practical implementations, enabling me to develop efficient and scalable solutions. My ability to adapt to emerging technologies helps me stay ahead in the ever-evolving tech landscape. I thrive in collaborative environments, where I can exchange ideas and contribute to impactful projects. With a passion for continuous learning and problem-solving, I am committed to making a difference through technology.<br><br>
-            I completed my schooling at Don Bosco Matriculation Higher Secondary School, where I built a strong academic foundation and developed essential skills that shaped my passion for technology. My school years played a crucial role in fostering my curiosity for problem-solving and analytical thinking.<br><br><br>
-        
+            I completed my schooling at Don Bosco Matriculation Higher Secondary School, where I built a strong academic foundation and developed essential skills that shaped my passion for technology. My school years played a crucial role in fostering my curiosity for problem-solving and analytical thinking.<br><br>
         </h3>
     </section>
 
-    <section id="projects" class="scroll-section">
-        <h1>Projects</h1>
-        <br> <br>
+    <section id="projects" class="scroll-section"> <br><br> 
+        <h1>Projects</h1> <br>
         <div class="project-grid">
             <div class="project">
                 <a href="https://github.com/thanishlaus/SmartFitness-Assistant.git" class="github-icon" target="_blank"><i class="fab fa-github"></i></a>
-                <img src="asserts/project1 fitness tracker.png" alt="Project 1"><br><br>
-                <h2>SmartFitness Assistant </h2><br>
+                <img src="asserts/project1 fitness tracker.png" alt="Project 1">
+                <h2>SmartFitness Assistant</h2>
                 <h3 class="project-description" style="text-align: justify;">
-                    • Designed an AI-driven fitness assistant leveraging machine learning pipelines for personalized workout recommendations.<br><br>
-                    • Implemented automated activity tracking and real-time feedback to enhance user performance and progress monitoring.<br><br>
+                    • Designed an AI-driven fitness assistant leveraging machine learning pipelines for personalized workout recommendations.<br>
+                    • Implemented automated activity tracking and real-time feedback to enhance user performance and progress monitoring.<br>
                     • Optimized ML workflows for data preprocessing, model training, and prediction, ensuring adaptive and intelligent fitness coaching.
                 </h3>
             </div>
             <div class="project">
                 <a href="https://github.com/thanishlaus/Wild-animal-detection.git" class="github-icon" target="_blank"><i class="fab fa-github"></i></a>
-                <img src="asserts/project-animal.png" alt="Project 2"><br><br>
-                <h2>Wild Animal Detection</h2><br>
+                <img src="asserts/project-animal.png" alt="Project 2">
+                <h2>Wild Animal Detection</h2>
                 <h3 class="project-description" style="text-align: justify;">
-                    • The scope of the project focusing on wild animal detection in residential areas and approach to the forest department 
-                    as well as resident to avoid human- wildlife interaction.<br><br>
-                    • Developed a ML model using SSD DL algorithm using pytorch framework.<br><br>
-                    • Achieved a real-time wild animal detection in residential areas and enhancing public safety
+                    • The scope of the project focusing on wild animal detection in residential areas and approach to the forest department as well as resident to avoid human-wildlife interaction.<br>
+                    • Developed a ML model using SSD DL algorithm using PyTorch framework.<br>
+                    • Achieved a real-time wild animal detection in residential areas and enhancing public safety.
                 </h3>
             </div>
             <div class="project">
                 <a href="https://github.com/thanishlaus/Heart_disease_prediction.git" class="github-icon" target="_blank"><i class="fab fa-github"></i></a>
-                <img src="asserts/project3-heart.png" alt="Project 3"><br><br>
-                <h2>Heart Disease Prediction</h2><br>
+                <img src="asserts/project3-heart.png" alt="Project 3">
+                <h2>Heart Disease Prediction</h2>
                 <h3 class="project-description" style="text-align: justify;">
-                    • Scope of the project is to utilizing diverse datasets to train a model and predict heart disease for enhancing diagnostic accuracy and efficiency.<br><br>
-                    • Trained a AutoML Model and Deployed using Docker.<br><br>
-                    • Frontend - javascript, CSS, Node.js, React.js<br><br>
+                    • Scope of the project is to utilizing diverse datasets to train a model and predict heart disease for enhancing diagnostic accuracy and efficiency.<br>
+                    • Trained an AutoML Model and Deployed using Docker.<br>
+                    • Frontend - JavaScript, CSS, Node.js, React.js<br>
                     • Framework - Django
                 </h3>
             </div>
             <div class="project">
                 <a href="https://github.com/thanishlaus/student-management-system.git" class="github-icon" target="_blank"><i class="fab fa-github"></i></a>
-                <img src="asserts/project4-student.png" alt="Project 4"><br><br>
-                <h2>Student Management System</h2><br>
+                <img src="asserts/project4-student.png" alt="Project 4">
+                <h2>Student Management System</h2>
                 <h3 class="project-description" style="text-align: justify;">
-                    • Developed a student management system web application for admission, handling attendance, marks and allot rank.<br><br>
-                    • Database managed by MySql.<br><br>
-                    • Frontend developed using HTML, CSS, javascript.
+                    • Developed a student management system web application for admission, handling attendance, marks and allot rank.<br>
+                    • Database managed by MySQL.<br>
+                    • Frontend developed using HTML, CSS, JavaScript.
                 </h3>
             </div>
         </div>
-    </section><br><br>
+    </section>
 
-    <section id="skills" class="scroll-section">
-        <h2>Skills</h2>
-        <br>
+    <section id="skills" class="scroll-section"> <br><br>
+        <h2>Skills</h2><br>
         <div class="skills-grid">
             <div class="skill">
                 <img src="asserts/python.png" alt="Python">
@@ -534,7 +624,7 @@
                 <p>Java</p>
             </div>
             <div class="skill">
-                <img src="asserts/c++.png" alt="c++">
+                <img src="asserts/c++.png" alt="C++">
                 <p>C++</p>
             </div>
             <div class="skill">
@@ -542,7 +632,7 @@
                 <p>R</p>
             </div>
             <div class="skill">
-                <img src="asserts/html.png" alt="html">
+                <img src="asserts/html.png" alt="HTML">
                 <p>HTML</p>
             </div>
             <div class="skill">
@@ -554,35 +644,35 @@
                 <p>React</p>
             </div>
             <div class="skill">
-                <img src="asserts/mysql.png" alt="mysql">
-                <p>MySql</p>
+                <img src="asserts/mysql.png" alt="MySQL">
+                <p>MySQL</p>
             </div>
             <div class="skill">
-                <img src="asserts/mongodb.png" alt="mdb">
+                <img src="asserts/mongodb.png" alt="MongoDB">
                 <p>MongoDB</p>
             </div>
             <div class="skill">
-                <img src="asserts/oracle.png" alt="oracle">
+                <img src="asserts/oracle.png" alt="Oracle">
                 <p>Oracle</p>
             </div>
             <div class="skill">
-                <img src="asserts/django.png" alt="django">
+                <img src="asserts/django.png" alt="Django">
                 <p>Django</p>
             </div>
             <div class="skill">
-                <img src="asserts/flask.png" alt="flask">
+                <img src="asserts/flask.png" alt="Flask">
                 <p>Flask</p>
             </div>
             <div class="skill">
-                <img src="asserts/git.png" alt="git">
+                <img src="asserts/git.png" alt="Git">
                 <p>Git</p>
             </div>
             <div class="skill">
-                <img src="asserts/github.png" alt="github">
+                <img src="asserts/github.png" alt="GitHub">
                 <p>GitHub</p>
             </div>
             <div class="skill">
-                <img src="asserts/jenkins.png" alt="jenkins">
+                <img src="asserts/jenkins.png" alt="Jenkins">
                 <p>Jenkins</p>
             </div>
             <div class="skill">
@@ -594,16 +684,14 @@
                 <p>TensorFlow</p>
             </div>
             <div class="skill">
-                <img src="asserts/tableau.png" alt="tableau">
+                <img src="asserts/tableau.png" alt="Tableau">
                 <p>Tableau</p>
             </div>
         </div>
-    </section><br><br><br>
-    
-    <section id="certifications" class="scroll-section">
-        
-        <h1>Certifications</h1>
-        <br>
+    </section>
+
+    <section id="certifications" class="scroll-section"> <br> <br>
+        <h1>Certifications</h1><br>
         <ul class="certifications-list">
             <li class="certification-item">
                 <h3>QLIK Sense Business Analyst</h3>
@@ -611,53 +699,56 @@
             </li>
             <li class="certification-item">
                 <h3>Artificial Intelligence in Bio Medical Workshop</h3>
-                <p>Gained hands-on experience in Neural Networks and Deep Learning Algorithms and Well versed in Concepts like Deep Learning, Neural Networks & Convolution Neural 
-                    Networks.</p>
+                <p>Gained hands-on experience in Neural Networks and Deep Learning Algorithms and well-versed in concepts like Deep Learning, Neural Networks & Convolution Neural Networks.</p>
             </li>
             <li class="certification-item">
                 <h3>Basics on Cyber Security</h3>
-                <p>Gained basic knowledge in Authentication, Encryption, Firewall, Computernetworks.</p>
+                <p>Gained basic knowledge in Authentication, Encryption, Firewall, Computer networks.</p>
             </li>
             <li class="certification-item">
                 <h3>IIT Spoken tutorial Course on Java</h3>
                 <p>Enhanced my skills in developing efficient business applications using Java.</p>
             </li>
             <li class="certification-item">
-                <h3>Machine learning and Deep learning</h3>
-                <p>Well-versed in Machine Learning and Deep Learning principles, with a strong foundation in 
-                    building, training, and fine-tuning intelligent models for diverse applications.</p>
+                <h3>Machine Learning and Deep Learning</h3>
+                <p>Well-versed in Machine Learning and Deep Learning principles, with a strong foundation in building, training, and fine-tuning intelligent models for diverse applications.</p>
             </li>
             <li class="certification-item">
                 <h3>Data Analytics with Python</h3>
-                <p>Well-versed in Probability, Hypothesis testing, ANOVA, Maximum Likelihood Estimation 
-                    Regressions, Cluster analysis, Classification and Regression Trees, Calculation metrics, 
-                    ROC and AUC curve, Chi-square test.</p>
+                <p>Well-versed in Probability, Hypothesis testing, ANOVA, Maximum Likelihood Estimation, Regressions, Cluster analysis, Classification and Regression Trees, Calculation metrics, ROC and AUC curve, Chi-square test.</p>
             </li>
             <li class="certification-item">
                 <h3>Python for Data Science</h3>
-                <p>Gained knowledge in python libraries such as Numpy, pandas, Matplotlib, Scipy, TensonFlow, 
-                    Scikit-learn, seaborn.</p>
+                <p>Gained knowledge in Python libraries such as Numpy, pandas, Matplotlib, Scipy, TensorFlow, Scikit-learn, seaborn.</p>
             </li>
             <li class="certification-item">
                 <h3>Enhancing Soft Skills and Personality</h3>
-                <p>Enhanced my soft skill such as Time management, Problem solving, Communicationskills, 
-                    Critical thinking, Creative thinking, Adaptability.</p>
+                <p>Enhanced my soft skills such as Time management, Problem solving, Communication skills, Critical thinking, Creative thinking, Adaptability.</p>
             </li>
         </ul>
     </section>
     
-    <section id="contact"> <!-- Added id for contact section -->
-        <h2 style="text-align: center;">Contact</h2> <!-- Centered heading -->
+    <section id="contact">
+        <h2 style="text-align: center;">Contact</h2>
         <div class="contact">
             <a href="mailto:antothanish6369@gmail.com"><i class="fas fa-envelope contact-icon"></i> antothanish6369@gmail.com</a>
             <a href="tel:+91 6369108340"><i class="fas fa-phone contact-icon"></i> +91 6369108340</a>
             <a href="https://www.linkedin.com/in/thanis6369" target="_blank"><i class="fab fa-linkedin contact-icon"></i> Let's Connect</a>
-            <a href="https://github.com/thanishlaus" target="_blank"><i class="fab fa-github contact-icon"></i>Just Visit </a>
+            <a href="https://github.com/thanishlaus" target="_blank"><i class="fab fa-github contact-icon"></i> Just Visit</a>
         </div>
     </section>
-    <script src="script.js"></script>
+
     <footer>
         <p>&copy; Built with passion.</p>
     </footer>
+
+    <script src="script.js"></script>
+        <!-- Import Particles.js and app.js files -->
+        <script src=
+        "particles.js-master/particles.js">
+    </script>
+    <script src=
+        "/particles.js-master/demo/js/app.js">
+    </script>
 </body>
 </html>
